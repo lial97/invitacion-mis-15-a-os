@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis XV Años · Isabella</title>
+  <meta name="description" content="Te invito a celebrar mis XV años el 12 de diciembre.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ===== Pantalla de bienvenida (sobre) =====
+       Los navegadores bloquean el audio automático hasta que el visitante
+       toca la página, por eso la música arranca al pulsar "Abrir invitación". -->
+  <div id="intro" class="intro">
+    <div class="sobre">
+      <div class="sello">XV</div>
+      <p class="intro-texto">Tienes una invitación especial</p>
+      <h1 class="intro-nombre">Isabella</h1>
+      <button id="btn-abrir" class="btn">Abrir invitación ✨</button>
+    </div>
+  </div>
+
+  <!-- Partículas decorativas -->
+  <div class="particulas" aria-hidden="true"></div>
+
+  <!-- Botón de música -->
+  <button id="btn-musica" class="btn-musica" aria-label="Pausar o reproducir música" title="Música">
+    <span class="icono-musica">♫</span>
+  </button>
+
+  <!-- Pista de audio: coloca tu canción en audio/cancion.mp3 -->
+  <audio id="cancion" loop preload="auto">
+    <source src="audio/cancion.mp3" type="audio/mpeg">
+  </audio>
+
+  <main>
+    <!-- ===== Portada ===== -->
+    <section class="portada">
+      <div class="corona" aria-hidden="true">👑</div>
+      <p class="sub">Mis</p>
+      <h2 class="xv">XV Años</h2>
+      <h1 class="nombre">Isabella</h1>
+      <div class="foto-principal">
+        <img src="img/principal.jpg" alt="Foto de la quinceañera" data-placeholder="Foto principal">
+      </div>
+      <p class="fecha-portada">Sábado · 12 de diciembre · 2026</p>
+      <div class="flecha" aria-hidden="true">⌄</div>
+    </section>
+
+    <!-- ===== Mensaje ===== -->
+    <section class="seccion mensaje revelar">
+      <div class="adorno" aria-hidden="true">❦</div>
+      <p class="cita">
+        “Hay momentos en la vida que son especiales por sí solos,
+        pero compartirlos con las personas que quieres los hace inolvidables.”
+      </p>
+      <p class="texto">
+        Con la bendición de Dios y el amor de mis padres
+      </p>
+      <p class="padres">Nombre del Papá &amp; Nombre de la Mamá</p>
+      <p class="texto">y mis padrinos</p>
+      <p class="padres">Nombre del Padrino &amp; Nombre de la Madrina</p>
+      <p class="texto">tengo el honor de invitarte a celebrar mis quince años.</p>
+    </section>
+
+    <!-- ===== Conteo regresivo ===== -->
+    <section class="seccion conteo revelar">
+      <h3 class="titulo">Faltan</h3>
+      <div id="contador" class="contador">
+        <div class="caja"><span id="dias">00</span><small>Días</small></div>
+        <div class="caja"><span id="horas">00</span><small>Horas</small></div>
+        <div class="caja"><span id="minutos">00</span><small>Minutos</small></div>
+        <div class="caja"><span id="segundos">00</span><small>Segundos</small></div>
+      </div>
+      <p id="mensaje-final" class="mensaje-final" hidden>¡Hoy es el gran día! 🎉</p>
+    </section>
+
+    <!-- ===== Galería ===== -->
+    <section class="seccion galeria revelar">
+      <h3 class="titulo">Mis recuerdos</h3>
+      <div class="grid-fotos">
+        <figure><img src="img/foto1.jpg" alt="Foto 1" data-placeholder="Foto 1"></figure>
+        <figure><img src="img/foto2.jpg" alt="Foto 2" data-placeholder="Foto 2"></figure>
+        <figure><img src="img/foto3.jpg" alt="Foto 3" data-placeholder="Foto 3"></figure>
+        <figure><img src="img/foto4.jpg" alt="Foto 4" data-placeholder="Foto 4"></figure>
+        <figure><img src="img/foto5.jpg" alt="Foto 5" data-placeholder="Foto 5"></figure>
+        <figure><img src="img/foto6.jpg" alt="Foto 6" data-placeholder="Foto 6"></figure>
+      </div>
+    </section>
+
+    <!-- ===== Detalles del evento ===== -->
+    <section class="seccion detalles revelar">
+      <h3 class="titulo">¿Dónde y cuándo?</h3>
+      <div class="tarjetas">
+        <article class="tarjeta">
+          <div class="icono" aria-hidden="true">⛪</div>
+          <h4>Ceremonia</h4>
+          <p class="hora">5:00 p. m.</p>
+          <p>Parroquia Nombre de la Iglesia</p>
+          <p class="dir">Dirección de la iglesia, Ciudad</p>
+          <a class="btn btn-sec" href="https://maps.google.com/?q=Parroquia" target="_blank" rel="noopener">Ver mapa</a>
+        </article>
+        <article class="tarjeta">
+          <div class="icono" aria-hidden="true">🥂</div>
+          <h4>Recepción</h4>
+          <p class="hora">8:00 p. m.</p>
+          <p>Salón de Eventos Nombre</p>
+          <p class="dir">Dirección del salón, Ciudad</p>
+          <a class="btn btn-sec" href="https://maps.google.com/?q=Salon+de+eventos" target="_blank" rel="noopener">Ver mapa</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Código de vestimenta ===== -->
+    <section class="seccion vestimenta revelar">
+      <h3 class="titulo">Código de vestimenta</h3>
+      <div class="icono-grande" aria-hidden="true">👗 🤵</div>
+      <p class="texto">Formal / Elegante</p>
+      <p class="nota">El color rosa está reservado para la quinceañera 💗</p>
+    </section>
+
+    <!-- ===== Regalos ===== -->
+    <section class="seccion regalos revelar">
+      <h3 class="titulo">Regalos</h3>
+      <div class="icono-grande" aria-hidden="true">💌</div>
+      <p class="texto">
+        Tu presencia es mi mejor regalo. Si deseas tener un detalle conmigo,
+        habrá una lluvia de sobres el día del evento.
+      </p>
+    </section>
+
+    <!-- ===== Confirmación ===== -->
+    <section class="seccion confirmar revelar">
+      <h3 class="titulo">Confirma tu asistencia</h3>
+      <p class="texto">Por favor confírmame antes del 1 de diciembre.</p>
+      <!-- Cambia el número (con código de país, sin + ni espacios) -->
+      <a id="btn-whatsapp" class="btn" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp 💬</a>
+    </section>
+
+    <footer class="pie">
+      <p class="firma">Isabella</p>
+      <p>¡Te espero para celebrar juntos!</p>
+    </footer>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
