@@ -8,7 +8,7 @@ const CONFIG = {
 
   // Número de WhatsApp para confirmar (código de país + número, sin + ni espacios)
   whatsapp: '573000000000',
-  mensajeWhatsapp: '¡Hola! Confirmo mi asistencia a los XV años de Isabella 🎉',
+  mensajeWhatsapp: '¡Hola! Confirmo mi asistencia a los XV años de Yandeilys 🎉',
 
   // Volumen de la música (0 a 1)
   volumen: 0.6,

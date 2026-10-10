@@ -373,7 +373,8 @@ main { position: relative; z-index: 2; }
 /* ===================== Detalles ===================== */
 .tarjetas {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 380px));
+  justify-content: center;
   gap: 20px;
 }
 .tarjeta {
