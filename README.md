@@ -11,7 +11,7 @@ fotos, lugares del evento, código de vestimenta y confirmación por WhatsApp.
 | Canción | Copia tu pista como `audio/cancion.mp3` |
 | Foto principal (redonda) | `img/principal.jpg` |
 | Galería (6 fotos) | `img/foto1.jpg` … `img/foto6.jpg` |
-| Video de recuerdos (sin audio) | `video/yandeilys.mp4`, portada en `img/video-portada.jpg` |
+| Video de recuerdos (con audio) | `video/yandeilys.mp4`, portada en `img/video-portada.jpg` |
 | Nombre, padres, padrinos, lugares, horas | `index.html` |
 | Fecha/hora de la fiesta, WhatsApp, volumen | Objeto `CONFIG` al inicio de `js/script.js` |
 | Colores | Variables `:root` al inicio de `css/styles.css` |
