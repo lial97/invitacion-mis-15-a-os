@@ -205,3 +205,13 @@ const cerrarModal = () => { modalCal.hidden = true; };
 document.getElementById('btn-calendario').addEventListener('click', () => { modalCal.hidden = false; });
 modalCal.querySelectorAll('a, .cerrar').forEach((b) => b.addEventListener('click', () => setTimeout(cerrarModal, 100)));
 modalCal.addEventListener('click', (e) => { if (e.target === modalCal) cerrarModal(); });
+
+/* ===================== Video de recuerdos =====================
+   Se reproduce sin sonido cuando está a la vista y se pausa al salir. */
+const videoRecuerdos = document.getElementById('video-recuerdos');
+new IntersectionObserver(([entrada]) => {
+  if (entrada.isIntersecting) videoRecuerdos.play().catch(() => {});
+  else videoRecuerdos.pause();
+}, { threshold: 0.5 }).observe(videoRecuerdos);
+// Por si alguien activa el sonido en los controles: lo mantenemos silenciado
+videoRecuerdos.addEventListener('volumechange', () => { videoRecuerdos.muted = true; });
