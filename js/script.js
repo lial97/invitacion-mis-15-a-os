@@ -2,9 +2,14 @@
    CONFIGURACIÓN — edita estos valores
    ========================================================== */
 const CONFIG = {
-  // Fecha y hora de la fiesta (año, mes 0-11, día, hora, minuto).
-  // Diciembre = 11.
-  fechaFiesta: new Date(2026, 11, 12, 20, 0, 0),
+  // Fecha y hora de la fiesta en hora de Colombia (-05:00), así el conteo
+  // es correcto aunque el invitado esté en otro país.
+  fechaFiesta: new Date('2026-12-12T20:00:00-05:00'),
+  duracionHoras: 6,
+
+  // Datos del evento para "Agregar al calendario"
+  tituloEvento: 'XV años de Yandeilys 🎉',
+  ubicacion: 'https://maps.app.goo.gl/i4c8Ji9uLC6Z8i9s9',
 
   // Número de WhatsApp para confirmar (código de país + número, sin + ni espacios)
   whatsapp: '573046056509',
@@ -161,3 +166,42 @@ document.querySelectorAll('.grid-fotos img').forEach((img) => {
 /* ===================== WhatsApp ===================== */
 document.getElementById('btn-whatsapp').href =
   `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.mensajeWhatsapp)}`;
+
+/* ===================== Agregar al calendario =====================
+   El botón de la portada ofrece guardar el evento en el calendario
+   del invitado. Su app de calendario se encarga de los recordatorios. */
+const fin = new Date(CONFIG.fechaFiesta.getTime() + CONFIG.duracionHoras * 3600 * 1000);
+const formatoUTC = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+const descripcion = `¡Te espero para celebrar mis XV años!\nUbicación: ${CONFIG.ubicacion}`;
+
+document.getElementById('cal-google').href =
+  'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+  `&text=${encodeURIComponent(CONFIG.tituloEvento)}` +
+  `&dates=${formatoUTC(CONFIG.fechaFiesta)}/${formatoUTC(fin)}` +
+  `&details=${encodeURIComponent(descripcion)}` +
+  `&location=${encodeURIComponent(CONFIG.ubicacion)}`;
+
+// Archivo .ics para iPhone, Outlook y otros calendarios, con avisos
+// un día antes y tres horas antes.
+const ics = [
+  'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Invitacion XV//ES', 'BEGIN:VEVENT',
+  `UID:xv-yandeilys-${formatoUTC(CONFIG.fechaFiesta)}@invitacion`,
+  `DTSTAMP:${formatoUTC(new Date())}`,
+  `DTSTART:${formatoUTC(CONFIG.fechaFiesta)}`,
+  `DTEND:${formatoUTC(fin)}`,
+  `SUMMARY:${CONFIG.tituloEvento}`,
+  `DESCRIPTION:${descripcion.replace(/\n/g, '\\n')}`,
+  `LOCATION:${CONFIG.ubicacion}`,
+  'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Mañana son los XV de Yandeilys', 'END:VALARM',
+  'BEGIN:VALARM', 'TRIGGER:-PT3H', 'ACTION:DISPLAY', 'DESCRIPTION:Hoy son los XV de Yandeilys', 'END:VALARM',
+  'END:VEVENT', 'END:VCALENDAR',
+].join('\r\n');
+document.getElementById('cal-ics').href =
+  'data:text/calendar;charset=utf-8,' + encodeURIComponent(ics);
+
+const modalCal = document.getElementById('modal-calendario');
+const cerrarModal = () => { modalCal.hidden = true; };
+
+document.getElementById('btn-calendario').addEventListener('click', () => { modalCal.hidden = false; });
+modalCal.querySelectorAll('a, .cerrar').forEach((b) => b.addEventListener('click', () => setTimeout(cerrarModal, 100)));
+modalCal.addEventListener('click', (e) => { if (e.target === modalCal) cerrarModal(); });
