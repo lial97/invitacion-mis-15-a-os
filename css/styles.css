@@ -344,12 +344,12 @@ main { position: relative; z-index: 2; }
 .grid-fotos figure:hover img { transform: scale(1.08); }
 
 /* Recortes para que se vea la cara en las fotos de la galería */
-.grid-fotos figure:nth-child(1) img { object-position: 40% 30%; }
-.grid-fotos figure:nth-child(2) img { object-position: 30% 20%; }
+.grid-fotos figure:nth-child(1) img { object-position: 50% 30%; }
+.grid-fotos figure:nth-child(2) img { object-position: 50% 30%; }
 .grid-fotos figure:nth-child(3) img { object-position: 30% 25%; }
 .grid-fotos figure:nth-child(4) img { object-position: 52% 50%; }
 .grid-fotos figure:nth-child(5) img { object-position: 52% 40%; }
-.grid-fotos figure:nth-child(6) img { object-position: 40% 45%; }
+.grid-fotos figure:nth-child(6) img { object-position: 30% 50%; }
 
 /* Video de recuerdos */
 .marco-video {
