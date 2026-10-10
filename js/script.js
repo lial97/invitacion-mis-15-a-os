@@ -168,7 +168,7 @@ document.getElementById('btn-whatsapp').href =
   `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.mensajeWhatsapp)}`;
 
 /* ===================== Agregar al calendario =====================
-   Al confirmar por WhatsApp se ofrece guardar el evento en el calendario
+   El botón de la portada ofrece guardar el evento en el calendario
    del invitado. Su app de calendario se encarga de los recordatorios. */
 const fin = new Date(CONFIG.fechaFiesta.getTime() + CONFIG.duracionHoras * 3600 * 1000);
 const formatoUTC = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
@@ -202,9 +202,6 @@ document.getElementById('cal-ics').href =
 const modalCal = document.getElementById('modal-calendario');
 const cerrarModal = () => { modalCal.hidden = true; };
 
-document.getElementById('btn-whatsapp').addEventListener('click', () => {
-  // WhatsApp se abre en otra pestaña o app; al volver, la pregunta ya está aquí.
-  setTimeout(() => { modalCal.hidden = false; }, 400);
-});
+document.getElementById('btn-calendario').addEventListener('click', () => { modalCal.hidden = false; });
 modalCal.querySelectorAll('a, .cerrar').forEach((b) => b.addEventListener('click', () => setTimeout(cerrarModal, 100)));
 modalCal.addEventListener('click', (e) => { if (e.target === modalCal) cerrarModal(); });

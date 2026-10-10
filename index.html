@@ -48,7 +48,7 @@
         <img src="img/principal.jpg" alt="Foto de la quinceañera" data-placeholder="Foto principal">
       </div>
       <p class="fecha-portada">Sábado · 12 de diciembre · 2026</p>
-      <div class="flecha" aria-hidden="true">⌄</div>
+      <button id="btn-calendario" class="btn btn-calendario" type="button">🗓️ Agregar al calendario</button>
     </section>
 
     <!-- ===== Mensaje ===== -->
@@ -130,11 +130,11 @@
       <a id="btn-whatsapp" class="btn" href="#" target="_blank" rel="noopener">Confirmar por WhatsApp 💬</a>
     </section>
 
-    <!-- Pregunta para guardar el evento en el calendario (aparece al confirmar) -->
+    <!-- Opciones para guardar el evento en el calendario -->
     <div id="modal-calendario" class="modal" hidden>
       <div class="modal-caja" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
         <div class="icono-grande" aria-hidden="true">🗓️</div>
-        <h4 id="modal-titulo">¿Quieres agendarlo en tu calendario?</h4>
+        <h4 id="modal-titulo">Agrega la fiesta a tu calendario</h4>
         <p>Así tu celular te recordará el día de la fiesta.</p>
         <a id="cal-google" class="btn" href="#" target="_blank" rel="noopener">Google Calendar</a>
         <a id="cal-ics" class="btn btn-sec" href="#" download="xv-yandeilys.ics">iPhone / Outlook</a>
