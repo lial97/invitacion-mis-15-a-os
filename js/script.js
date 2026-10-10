@@ -207,11 +207,47 @@ modalCal.querySelectorAll('a, .cerrar').forEach((b) => b.addEventListener('click
 modalCal.addEventListener('click', (e) => { if (e.target === modalCal) cerrarModal(); });
 
 /* ===================== Video de recuerdos =====================
-   Se reproduce sin sonido cuando está a la vista y se pausa al salir. */
+   Empieza con sonido cuando está a la vista y se pausa al salir.
+   Mientras el video suena, la canción de fondo se pausa y vuelve
+   cuando el video se detiene o termina. */
 const videoRecuerdos = document.getElementById('video-recuerdos');
+let musicaPausadaPorVideo = false;
+
+function silenciarMusica() {
+  if (!videoRecuerdos.muted && !cancion.paused) {
+    cancion.pause();
+    btnMusica.classList.replace('sonando', 'pausado');
+    musicaPausadaPorVideo = true;
+  }
+}
+
+function reanudarMusica() {
+  if (musicaPausadaPorVideo) {
+    musicaPausadaPorVideo = false;
+    reproducir();
+  }
+}
+
+videoRecuerdos.addEventListener('play', silenciarMusica);
+videoRecuerdos.addEventListener('volumechange', () => {
+  if (videoRecuerdos.paused) return;
+  if (videoRecuerdos.muted) reanudarMusica();
+  else silenciarMusica();
+});
+videoRecuerdos.addEventListener('pause', reanudarMusica);
+videoRecuerdos.addEventListener('ended', reanudarMusica);
+
 new IntersectionObserver(([entrada]) => {
-  if (entrada.isIntersecting) videoRecuerdos.play().catch(() => {});
-  else videoRecuerdos.pause();
+  if (!entrada.isIntersecting) {
+    videoRecuerdos.pause();
+    return;
+  }
+  if (videoRecuerdos.ended) return;
+  videoRecuerdos.muted = false;
+  videoRecuerdos.play().catch(() => {
+    // Si el navegador no deja sonar el video solo, arranca en silencio;
+    // el invitado puede activar el sonido con los controles.
+    videoRecuerdos.muted = true;
+    videoRecuerdos.play().catch(() => {});
+  });
 }, { threshold: 0.5 }).observe(videoRecuerdos);
-// Por si alguien activa el sonido en los controles: lo mantenemos silenciado
-videoRecuerdos.addEventListener('volumechange', () => { videoRecuerdos.muted = true; });
