@@ -17,7 +17,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: var(--texto);
   background: var(--crema);
@@ -39,7 +39,7 @@ body.bloqueado { overflow: hidden; }
   border-radius: 50px;
   background: linear-gradient(135deg, var(--verde-oscuro), var(--dorado));
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -249,7 +249,7 @@ main { position: relative; z-index: 2; }
 .titulo::after {
   content: '✦ ✦ ✦';
   display: block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.8rem;
   letter-spacing: 8px;
   color: var(--dorado);
@@ -351,6 +351,25 @@ main { position: relative; z-index: 2; }
 .grid-fotos figure:nth-child(5) img { object-position: 52% 40%; }
 .grid-fotos figure:nth-child(6) img { object-position: 40% 45%; }
 
+/* Video de recuerdos */
+.marco-video {
+  max-width: 720px;
+  margin: 24px auto 0;
+  padding: 10px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--dorado), var(--verde), var(--dorado));
+  box-shadow: var(--sombra);
+}
+.marco-video video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+  border-radius: 14px;
+  border: 3px solid #fff;
+}
+
 /* Álbum compartido con QR */
 .album {
   max-width: 440px;
@@ -375,7 +394,7 @@ main { position: relative; z-index: 2; }
 .album .subtitulo::after {
   content: '✦ ✦ ✦';
   display: block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 0.75rem;
   letter-spacing: 8px;
   color: var(--dorado);
