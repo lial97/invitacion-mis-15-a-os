@@ -69,6 +69,17 @@ btnMusica.addEventListener('click', () => {
   }
 });
 
+// Intenta sonar apenas se abre la página. Si el navegador lo bloquea
+// (casi todos lo hacen hasta que el visitante toca la pantalla),
+// la canción empieza con el primer toque o clic en cualquier parte.
+reproducir();
+
+function primerToque(e) {
+  document.removeEventListener('pointerdown', primerToque);
+  if (cancion.paused && !btnMusica.contains(e.target)) reproducir();
+}
+document.addEventListener('pointerdown', primerToque);
+
 /* ===================== Pantalla de bienvenida ===================== */
 const intro = document.getElementById('intro');
 document.body.classList.add('bloqueado');
@@ -82,7 +93,7 @@ document.getElementById('btn-abrir').addEventListener('click', () => {
 
 /* ===================== Partículas (pétalos y brillos) ===================== */
 const contenedorParticulas = document.querySelector('.particulas');
-const simbolos = ['🌸', '✨', '💗', '🌷', '✦'];
+const simbolos = ['🌿', '🍃', '✨', '🦋', '✦'];
 const reducirMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function crearParticula() {
@@ -114,18 +125,18 @@ const observador = new IntersectionObserver((entradas) => {
 document.querySelectorAll('.revelar').forEach((s) => observador.observe(s));
 
 /* ===================== Fotos de ejemplo =====================
-   Si todavía no has subido una foto, se muestra un marcador rosa.
+   Si todavía no has subido una foto, se muestra un marcador verde.
    Para usar tus fotos colócalas en la carpeta img/ con estos nombres:
    principal.jpg, foto1.jpg ... foto6.jpg */
 function marcador(texto) {
   const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
       <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#fbe9ef"/><stop offset="1" stop-color="#e8a5b8"/>
+        <stop offset="0" stop-color="#e8f5ec"/><stop offset="1" stop-color="#b5dcc2"/>
       </linearGradient></defs>
       <rect width="600" height="800" fill="url(#g)"/>
       <text x="300" y="380" font-size="90" text-anchor="middle">📷</text>
-      <text x="300" y="470" font-family="Georgia, serif" font-size="40" fill="#c76b8a" text-anchor="middle">${texto}</text>
+      <text x="300" y="470" font-family="Georgia, serif" font-size="40" fill="#5e9474" text-anchor="middle">${texto}</text>
     </svg>`;
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
